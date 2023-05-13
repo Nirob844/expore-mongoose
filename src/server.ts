@@ -4,7 +4,6 @@ import app from './app';
 const port: number = 5000;
 
 // database connection
-//bootstrap().catch(err => console.log(err));
 
 async function bootstrap() {
     try {

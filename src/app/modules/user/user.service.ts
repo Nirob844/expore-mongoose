@@ -7,23 +7,12 @@ export const createUserToDb = async (payload: IUser): Promise<IUser> => {
     return user;
 };
 
-export const getUserToDb = async (): Promise<IUser[]> => {
+export const getUsersFromDb = async (): Promise<IUser[]> => {
     const users = await User.find();
     return users;
 }
 
-  // const user = await new User({
-    //     id: '666',
-    //     role: "student",
-    //     password: 'nirob',
-    //     name: {
-    //         firstName: 'Nirob',
-    //         lastName: 'Hasan',
-    //     },
-    //     gender: "male",
-    //     email: 'nirob@ahn.com',
-    //     contactNo: '01785541',
-    //     emergencyContactNo: '01785541',
-    //     presentAddress: 'Dhaka',
-    //     permanentAddress: 'Dhaka',
-    // });
+export const getUserByIdFromDb = async (payload: string): Promise<IUser | null> => {
+    const user = await User.findOne({ id: payload }, { name: 1, email: 1, contactNo: 1 });
+    return user
+}
